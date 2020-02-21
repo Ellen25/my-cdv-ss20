@@ -25,4 +25,7 @@ The chapter 6 of the article offers me a new way of viewing the distribution of 
 
 
 Reference
+
 Boyd, Danah & Kate Crawford. “Critical Questions for Big Data”, Information, Communication & Society, 15:5, 662-679, DOI: 10.1080/1369118X.2012.678878
+
+Paulos, John Allen. “We’ re Reading the Coronavirus Numbers Wrong”, New York Times. Feb. 18, 2020.

@@ -1,0 +1,21 @@
+.bar {
+  height: 50px;
+  width: 200px;
+  background-color:#ff7081;
+  margin-bottom: 40px;
+}
+
+#viz {
+  margin-left: 50px;
+}
+
+body {
+  background-color: black;
+}
+
+#title {
+  color: #ff7081;
+  text-align: center;
+  font-size: 20px;
+  font-family: Impact;
+}

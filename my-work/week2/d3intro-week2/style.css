@@ -1,0 +1,24 @@
+body{
+  width, height: 100%;
+  margin: 0;
+  background-color: #a1b5c9;
+}
+
+#viz{
+  background-color: #0f4c81;
+  width: 600px;
+  height: 600px;
+  margin-left: 28%;
+  margin-top: 1%;
+}
+
+#info{
+  position: absolute;;
+  top: 20px;
+  margin-top: 0;
+  margin-left: 200px;
+}
+
+p {
+  margin-bottom: 75px;
+}

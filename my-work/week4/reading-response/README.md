@@ -24,6 +24,7 @@ This is still the problem of that digital tools are rationalizing discrimination
 People are starting to get back to work these days and in Shanghai most office buildings require workers to scan a QR code when they enter the building through an application. By scanning the QR code one’s data including when and where have he/she been will be acquired. In terms of the corona virus, I believe it is an effective way to control, especially in such a large city where so many people are coming back to work at the same time. On the other hand, it seems that many information, such as one’s travel history, have already been known, as people do not need to enter their travel history manually, but the information would automatically be acquired. This reminds me of the word “target” in the podcast. We are under control everywhere; we are targets instead of clients.
 
 **Citations**
-Adhikari, Sandesh. “Equity Vs Equality: 20 differences between Equity and Equality!”,	Public Health Notes. May 6, 2017.
-https://www.publichealthnotes.com/equity-vs-equality/
-Rheannon, Francesca. “Virginia Eubanks, AUTOMATING INEQUALITY”, Writer’s	Voice. Oct 18, 2019. https://www.writersvoice.net/tag/virginia-eubanks/
+
+Adhikari, Sandesh. “Equity Vs Equality: 20 differences between Equity and Equality!”,	Public Health Notes. May 6, 2017.https://www.publichealthnotes.com/equity-vs-equality/
+
+Rheannon, Francesca. “Virginia Eubanks, AUTOMATING INEQUALITY”, Writer’s Voice. Oct 18, 2019. https://www.writersvoice.net/tag/virginia-eubanks/

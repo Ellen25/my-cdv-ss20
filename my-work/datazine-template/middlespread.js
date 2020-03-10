@@ -1,11 +1,12 @@
 console.log("js loaded. hello!");
 
 // console.log(document.getElementById("viz-container"));
-let viz = d3.select("#viz-container")
+let viz = d3.select("#container")
   .append("svg")
     .attr("id", "viz")
-    .attr("width", 1000)
-    .attr("height", 600)
+    .attr("width", 1200)
+    .attr("height", 800)
+    .attr("fill", "blue")
   ;
 
 
@@ -112,7 +113,7 @@ function gotData(incomingData){
         .attr("y", 0)
         .attr("width", 50)
         .attr("height", 50)
-        .attr("fill", "white")
+        .attr("fill", "blue")
         .style("opacity",light)
         .attr("class","lightInt")
   ;

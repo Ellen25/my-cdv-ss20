@@ -214,33 +214,71 @@ function gotData(incomingData){
   datagroups.attr("transform", groupPosition);
 
 
+
+
 //time
-function circleColor(){
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+  let dateObjectReturn = d3.timeFormat("%H:%M");
+  function mapFunction(d,i){
+    d.time = dateObjectReturn(new Date(d.time));
+    return d;
   }
-  return color;
-}
-function cxPosition(){
-  return Math.random() * 2400;
-}
-function cyPosition(){
-  return Math.random() * 800;
-}
-function radius(){
-  return Math.random() * 100;
-}
-viz.selectAll(".time").data(incomingData).enter()
-  .append("circle")
-    .attr("class", "time")
-    .attr("cx", cxPosition)
-    .attr("cy", cyPosition)
-    .attr("r", radius)
-    .attr("fill", circleColor)
-    .style("opacity", 0.7)
-;
+  let timeReturnedData = incomingData.map(mapFunction);
+  console.log("timeAdjustedData", timeReturnedData);
+
+  let dateConvert = d3.timeParse("%H:%M");
+  function mapConverterFunction(d,i){
+    d.time = dateConvert(d.time);
+    return d;
+  }
+  let timeConvertedData = timeReturnedData.map(mapConverterFunction);
+  console.log("convertedData", timeConvertedData);
+
+
+  function findTime(d,i){
+    return d.time;
+  }
+  let minTime = d3.min(timeConvertedData, findTime)
+  console.log(minTime);
+  let maxTime = d3.max(timeConvertedData, findTime)
+  console.log(maxTime);
+  let alternativeXDomain = d3.extent(timeConvertedData, findTime)
+  console.log(alternativeXDomain);
+
+  let xPadding = 50;
+  let xScale = d3.scaleTime().domain(alternativeXDomain).range([0,w]);
+
+  function cxPosition(d,i){
+    return xScale(d.time);
+  }
+
+  // function cxPosition(){
+  //   return Math.random() * 2400;
+  // }
+  function cyPosition(){
+    return Math.random() * 800;
+  }
+  function radius(){
+    return Math.random() * 100;
+  }
+
+  function circleColor(){
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  viz.selectAll(".time").data(incomingData).enter()
+    .append("circle")
+      .attr("class", "time")
+      .attr("cx", cxPosition)
+      .attr("cy", cyPosition)
+      .attr("r", radius)
+      .attr("fill", circleColor)
+      .style("opacity", 0.7)
+  ;
 
 }
 

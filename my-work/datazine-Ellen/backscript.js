@@ -156,7 +156,7 @@ datagroup
 let instruction = viz
   .append("g")
     .attr("class", "instruction")
-    .attr("transform", "translate(650, 100)")
+    .attr("transform", "translate(650, 70)")
 
 instruction
   .append("text")
@@ -467,4 +467,36 @@ instruction
     .attr("text-anchor", "start")
     .attr("font-family", "Rockwell")
     .text("G: Date")
+;
+
+//background
+instruction
+  .append("text")
+    .style("fill", "black")
+    .style("font-size", 25)
+    .attr("dy", 610)
+    .attr("dx", -50)
+    .attr("text-anchor", "start")
+    .attr("font-family", "Rockwell")
+    .text("Circles at the back: ")
+;
+instruction
+  .append("text")
+    .style("fill", "black")
+    .style("font-size", 22)
+    .attr("dy", 640)
+    .attr("dx", -20)
+    .attr("text-anchor", "start")
+    .attr("font-family", "Rockwell")
+    .text("their X positions represent the time when")
+;
+instruction
+  .append("text")
+    .style("fill", "black")
+    .style("font-size", 22)
+    .attr("dy", 670)
+    .attr("dx", -20)
+    .attr("text-anchor", "start")
+    .attr("font-family", "Rockwell")
+    .text("I collected the data (from 7:15 to 16:25)")
 ;

@@ -217,20 +217,26 @@ function gotData(incomingData){
 
 
 //time
-  let dateObjectReturn = d3.timeFormat("%H:%M");
-  function mapFunction(d,i){
-    d.time = dateObjectReturn(new Date(d.time));
-    return d;
-  }
-  let timeReturnedData = incomingData.map(mapFunction);
-  console.log("timeAdjustedData", timeReturnedData);
+  // let dateObjectReturn = d3.timeFormat("%H:%M");
+  // function mapFunction(d,i){
+  //   d.time = dateObjectReturn(new Date(d.time));
+  //   return d;
+  // }
+  // let timeReturnedData = incomingData.map(mapFunction);
+  // console.log("timeAdjustedData", timeReturnedData);
 
-  let dateConvert = d3.timeParse("%H:%M");
+  // let dateConvert = d3.timeParse("%H:%M");
+  // function mapConverterFunction(d,i){
+  //   d.time = dateConvert(d.time);
+  //   return d;
+  // }
+  // let timeConvertedData = timeReturnedData.map(mapConverterFunction);
+  // console.log("convertedData", timeConvertedData);
   function mapConverterFunction(d,i){
-    d.time = dateConvert(d.time);
+    d.time = new Date(d.time);
     return d;
   }
-  let timeConvertedData = timeReturnedData.map(mapConverterFunction);
+  let timeConvertedData = incomingData.map(mapConverterFunction);
   console.log("convertedData", timeConvertedData);
 
 

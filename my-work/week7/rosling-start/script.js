@@ -198,7 +198,7 @@ function gotData(incomingData){
     currentYear = dates[currentYearIndex];
     year.text(currentYear)
     drawViz();
-  }, 1000);
+  }, 500);
 
 
 

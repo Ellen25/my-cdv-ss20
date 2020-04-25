@@ -1,0 +1,24 @@
+body{
+  background-color: black;
+}
+
+#comic {
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%; */
+  position: absolute;
+  height: 100%;
+  left: 17%;
+}
+
+#comicButton{
+  width: 150px;
+  height: 80px;
+  /* opacity: 0.5;
+  background-color: white; */
+  /* cursor: pointer; */
+  position: fixed;
+  left: 850px;
+  top: 300px;
+}

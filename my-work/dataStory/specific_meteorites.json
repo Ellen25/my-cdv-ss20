@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Sylacauga",
+    "GeoLocation": "(33.18836, -86.2945)",
+    "reclat": "33.18836",
+    "reclong": "-86.2945",
+    "discription": "Sometime in the fall of 1954, a 34-year old woman named Ann Hodges was napping on her sofa when an 8.5lb meteorite smashed through her window and struck her on the hip. She was bruised, but otherwise unharmed by the meteorite her neighbours described as a “fireball shooting through the sky”. Due to the extra attention and the spiritual belief of the meteorite, she suffered from a great nervous breakdown and died at the age of 52."
+  },
+  {
+    "name": "Willamette",
+    "GeoLocation": "(45.36667, -122.58333)",
+    "reclat": "45.36667",
+    "reclong": "-122.58333",
+    "discription": "It landed around 1,000 years ago and was discovered by Westerners in 1902 – although it was long revered by the Native American Clackamas tribe as a healing source they called Tomanowos.It was discovered by Ellis Hughes in 1902 who recognized that it was more than a piece of rock, and spent three months shifting it three quarters of a mile from land owned by the Oregon Iron and Steel Company, but he was caught."
+  },
+  {
+    "name": "Mbosi",
+    "GeoLocation": "(-9.11667, 33.06667)",
+    "reclat": "-9.11667",
+    "reclong": "33.06667",
+    "discription": "Mbozi was once a sacred stone to the people of Tanzania, who call it kimondo. No crater was found, which means it probably rolled like a boulder when it hit the Earth's surface. Mbozi was partially buried when it was first discovered, so people dug the hillside around it, leaving a pillar of soil underneath, which was then turned into a plinth."
+  },
+  {
+    "name": "Allende",
+    "GeoLocation": "(26.96667, -105.31667)",
+    "reclat": "26.96667",
+    "reclong": "-105.31667",
+    "discription": "It’s one of the most studied meteorites of all time and a prime example of a carbonaceous chondrite. Dating back to the formation of the Sun and Planets 4.6 Billion Years ago, they are among the most primitive solar system materials known to man and are made of silicates, oxides, sulfides, water, organic compounds and various different minerals."
+  }
+  
+]

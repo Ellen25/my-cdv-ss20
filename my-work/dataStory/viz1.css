@@ -8,7 +8,7 @@
 
 body{
   background-color: black;
-  margin: 0;
+  margin: 0
 }
 
 
@@ -17,9 +17,10 @@ p{
   color: white;
 }
 
+
 #titleWord{
   position: absolute;
-  top: 650px;
+  top: 625px;
   width: 500px;
   height: 80px;
   background-color: orange;
@@ -34,10 +35,31 @@ p{
 
 #wordAtTheEnd{
   margin: 100px;
-  margin-top: 150px;
+  margin-top: 300px;
+}
+
+#note{
+  position:absolute;
+  top: 550px;
+  font-size: 10px;
+}
+
+#buttonnext{
+  width: 100px;
+  height: 10px;
+  position: absolute;
+  background-color: orange;
+  top: 450px;
+}
+.nextviz{
+  margin: 0;
 }
 
 #container{
-  position: sticky;
+  position: relative;
   margin:0;
+  /* z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
 }

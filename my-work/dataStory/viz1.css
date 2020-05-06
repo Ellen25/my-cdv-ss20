@@ -35,7 +35,9 @@ p{
 
 #wordAtTheEnd{
   margin: 100px;
-  margin-top: 300px;
+  background-color: orange;
+  /* position: absolute; */
+  top: 800px;
 }
 
 #note{
@@ -56,10 +58,37 @@ p{
 }
 
 #container{
-  position: relative;
+  position: sticky;
   margin:0;
+  top: 0;
   /* z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center; */
+}
+
+.mPoint{
+  cursor: pointer;
+}
+
+#explanation{
+  position: absolute;
+  left: -500px;
+}
+
+#story{
+  width: 400px;
+  position: absolute;
+  left: -500px;
+  overflow: hidden;
+}
+#closeButton{
+  cursor: pointer;
+  color: white;
+  font-size: 50px;
+}
+#storyContent{
+  margin: 16px;
+  margin-top: 23px;
+  margin-bottom: 23px;
 }

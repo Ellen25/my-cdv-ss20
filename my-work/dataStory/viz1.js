@@ -17,7 +17,7 @@ let viz = d3.select("#container").append("svg")
 ;
 let mapLayer = viz.append("g").attr("class", "mapLayer");
 let graphGroup = viz.append("g").attr("class", "graphGroup");
-let tooltipPlayer = viz.append("g").attr("class", "tooltipPlayer");
+let tooltipLayer = viz.append("g").attr("class", "tooltipPlayer");
 
 
 
@@ -42,6 +42,11 @@ d3.json("countries.geojson").then(function(geoData){
     //   .attr("fill", "red")
     //   .attr("class", "fallExplanation")
     // ;
+
+
+
+    // d3.shuffle(incomingData);
+    // incomingData = incomingData.slice(0,20000);
 
 
 
@@ -71,20 +76,8 @@ d3.json("countries.geojson").then(function(geoData){
             .on("mouseover", function(d,i){
               d3.select(this).select("circle")
                 .transition()
-                .attr("r", 20)
-              ;
-            })
-            .on("mouseout", function(d,i){
-              explanationDiv
-                .attr("width", 0)
-                .attr("height", 0)
-              ;
-              explanation1.text("");
-              explanation2.text("");
-              explanation3.text("");
-              explanation4.text("");
-              d3.select(this).select("circle")
-                .attr("r", 2)
+                // .attr("r", 20)
+                .attr("fill", "orange")
               ;
             })
             .on("click", function(d,i){
@@ -92,9 +85,18 @@ d3.json("countries.geojson").then(function(geoData){
               console.log(d3.event)
               console.log(d3.mouse(viz.node()));
               let mouseInSVG = d3.mouse(viz.node());
+              // var explanation = document.getElementById("explanation");
+              // var content = document.createElement("P");
+              // content.innerText = "Name: " + d.name +"\n Found Data: " +  mTime + "\n Fell or Found: " + d.fall +"\n Mass: " + d.mass + "(g)";
+              // explanation.innerHTML = "";
+              // explanation.appendChild(content);
+              // explanation.style.backgroundColor = "orange";
+              // explanation.style.left = mouseInSVG[0] + "px";
+              // explanation.style.top = mouseInSVG[1] + "px";
+
               explanationDiv
                 .attr("x", mouseInSVG[0]+30)
-                .attr("y", mouseInSVG[1]-100)
+                .attr("y", mouseInSVG[1]-40)
                 .attr("width", 270)
                 .attr("height", 110)
                 .attr("fill", "orange")
@@ -102,13 +104,15 @@ d3.json("countries.geojson").then(function(geoData){
               ;
               explanation1
                 .text("Name: " + d.name)
+                .attr("font-family", "Rockwell")
                 .attr("x", mouseInSVG[0]+40)
-                .attr("y", mouseInSVG[1]-70)
+                .attr("y", mouseInSVG[1]-10)
               ;
               explanation2
                 .text("Found Date: " + mTime)
+                .attr("font-family", "Rockwell")
                 .attr("x", mouseInSVG[0]+40)
-                .attr("y", mouseInSVG[1]-50)
+                .attr("y", mouseInSVG[1]+10)
               ;
               explanation3
                 // .text(function(d,i){
@@ -120,19 +124,41 @@ d3.json("countries.geojson").then(function(geoData){
                   // console.log("d is " + d);
                 // })
                 .text("Fell or Found: "+d.fall)
+                .attr("font-family", "Rockwell")
                 .attr("x", mouseInSVG[0]+40)
-                .attr("y", mouseInSVG[1]-30)
+                .attr("y", mouseInSVG[1]+30)
               ;
               explanation4
                 .text("Mass: " + d.mass + "(g)")
+                .attr("font-family", "Rockwell")
                 .attr("x", mouseInSVG[0]+40)
-                .attr("y", mouseInSVG[1]-10)
+                .attr("y", mouseInSVG[1]+50)
               ;
+            })
+            .on("mouseout", function(d,i){
+              explanationDiv
+                .attr("width", 0)
+                .attr("height",0)
+              ;
+              explanation1.text("");
+              explanation2.text("");
+              explanation3.text("");
+              explanation4.text("");
+              d3.select(this).select("circle")
+                .attr("r", 2)
+                .attr("fill", "white")
+              ;
+              // var explanation = document.getElementById("explanation");
+              // explanation.style.left = "-500px";
+              // explanation.style.width = 0;
+              // explanation.style.height = 0;
+              // content.innerText = "";
             })
           ;
     datagroups.append("circle")
       .attr("r", 2)
       .attr("fill", "white")
+      .attr("class", "mPoint")
     ;
 
     // function expText(incomingData){
@@ -147,23 +173,23 @@ d3.json("countries.geojson").then(function(geoData){
 
 
 
-    let explanationDiv = tooltipPlayer.append("rect")
+    let explanationDiv = tooltipLayer.append("rect")
       .attr("x", 2)
       .attr("y", 2)
     ;
-    let explanation1 = tooltipPlayer.append("text")
+    let explanation1 = tooltipLayer.append("text")
       .attr("fill", "white")
       .attr("class", "explanation")
     ;
-    let explanation2 = tooltipPlayer.append("text")
+    let explanation2 = tooltipLayer.append("text")
       .attr("fill", "white")
       .attr("class", "explanation")
     ;
-    let explanation3 = tooltipPlayer.append("text")
+    let explanation3 = tooltipLayer.append("text")
       .attr("fill", "white")
       .attr("class", "explanation")
     ;
-    let explanation4 = tooltipPlayer.append("text")
+    let explanation4 = tooltipLayer.append("text")
       .attr("fill", "white")
       .attr("class", "explanation")
     ;
@@ -178,7 +204,7 @@ d3.json("countries.geojson").then(function(geoData){
 
       // let emptyData = [];
       function secondVizFunction(specificData){
-        let storyDiv = viz.append("g");
+        let storyDiv = tooltipLayer.append("g");
         let storybg = storyDiv.append("rect");
         let story1 = storyDiv.append("text")
           .attr("fill", "white")
@@ -191,7 +217,14 @@ d3.json("countries.geojson").then(function(geoData){
 
         console.log("function called");
         //get current elements
-        let currentElements = graphGroup.selectAll(".datagroup").data(specificData);
+        function assignKeys(d,i){
+          return d.name;
+        }
+        let currentElements = graphGroup.selectAll(".datagroup").data(specificData, assignKeys);
+        currentElements.select("circle")
+          .attr("r", 15)
+          .attr("fill", "orange")
+        ;
         //exit most of them
         let exitingElements = currentElements.exit();
         console.log(exitingElements);
@@ -205,33 +238,56 @@ d3.json("countries.geojson").then(function(geoData){
             d3.select(this).select("circle")
               .transition()
               .attr("r", 30)
-              .attr("fill", "orange")
+              .attr("fill", "white")
             ;
           })
-          .on("clicked", function(d,i){
+          .on("click", function(d,i){
             console.log(this)
-            explanationDiv
-              .attr("width", 0)
-              .attr("height", 0)
+            let mouseInSVG = d3.mouse(viz.node());
+            var story = document.getElementById("story");
+            var storyContent = document.createElement("P");
+            storyContent.setAttribute("id", "storyContent");
+            storyContent.innerText = "Name: " + d.name + "\n" + "\n" + d.discription;
+            story.innerHTML = "";
+            story.appendChild(storyContent);
+            story.style.backgroundColor = "orange";
+            story.style.left = (w/2-200) +"px";
+            story.style.top = (h/2-100) + "px";
+            // explanationDiv
+            //   .attr("width", 0)
+            //   .attr("height", 0)
+            // ;
+            // explanation1.text(d.discription);
+            // explanation2.text("");
+            // explanation3.text("");
+            // explanation4.text("");
+            // storyDiv
+            //   .attr("transfrom", "translate(500, 200)")
+            // ;
+            // storybg
+            //   .attr("x", 0)
+            //   .attr("y", 0)
+            //   .attr("height", 200)
+            //   .attr("width", 300)
+            // ;
+            // story1
+            //   .attr("text", d.discription)
+            //   .attr("x", 10)
+            //   .attr("y", 10)
+            // ;
+          })
+          .on("mouseout", function(d,i){
+            d3.select(this).select("circle")
+              .attr("r", 15)
             ;
-            explanation1.text(d.discription);
-            explanation2.text("");
-            explanation3.text("");
-            explanation4.text("");
-            storyDiv
-              .attr("transfrom", "translate(w/2-50, h/2-50)")
-            ;
-            storybg
-              .attr("x", 0)
-              .attr("y", 0)
-              .attr("height", 200)
-              .attr("width", 300)
-            ;
-            story1
-              .attr("text", d.discription)
-              .attr("x", 10)
-              .attr("y", 10)
-            ;
+            // explanationDiv
+            //   .attr("width", 0)
+            //   .attr("height", 0)
+            // ;
+            // explanation1.text("");
+            // explanation2.text("");
+            // explanation3.text("");
+            // explanation4.text("");
           })
       }
 
@@ -249,3 +305,10 @@ d3.json("countries.geojson").then(function(geoData){
 
   })//end of incomingdata function
 })//end of geodata function
+
+
+
+function removeStory(){
+  document.getElementById("story").style.left = "-500px";
+}
+document.getElementById("closeButton").addEventListener("click", removeStory);

@@ -17,13 +17,23 @@ p{
   color: white;
 }
 
+#container{
+  position: sticky;
+  margin:0;
+  top: 0;
+  /* z-index: -1; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
 
 #titleWord{
   position: absolute;
   top: 625px;
   width: 500px;
   height: 80px;
-  background-color: orange;
+  background-color: rgba(255,165,0, 0.9);
 }
 
 #title{
@@ -35,9 +45,14 @@ p{
 
 #wordAtTheEnd{
   margin: 100px;
-  background-color: orange;
+  margin-top: 150px;
+  background-color: rgba(255,165,0, 0.9);
   /* position: absolute; */
-  top: 1000px;
+  /* top: 1800px; */
+}
+#wordContent{
+  margin: 60px;
+  border-top: 60px;
 }
 
 #note{
@@ -60,34 +75,25 @@ p{
 } */
 
 #buttonnext{
-  width: 100px;
+  width: 250px;
   height: 10px;
   position: absolute;
-  background-color: orange;
-  top: 450px;
+  background-color: rgba(255,165,0, 0.9);
+  top: 550px;
   cursor: pointer;
 }
 .nextviz{
   margin: 0;
+  font-size: 3px;
 }
 
-#container{
-  position: sticky;
-  margin:0;
-  top: 0;
-  /* z-index: -1;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-}
 
 .mPoint{
   cursor: pointer;
 }
 
-#explanation{
-  position: absolute;
-  left: -500px;
+.explanation{
+  font-family: Rockwell;
 }
 
 #story{

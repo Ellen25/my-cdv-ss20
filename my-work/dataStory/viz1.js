@@ -109,33 +109,21 @@ d3.json("countries.geojson").then(function(geoData){
               ;
               explanation1
                 .text("Name: " + d.name)
-                .attr("font-family", "Rockwell")
                 .attr("x", mouseInSVG[0]+40)
                 .attr("y", mouseInSVG[1]-10)
               ;
               explanation2
                 .text("Found Date: " + mTime)
-                .attr("font-family", "Rockwell")
                 .attr("x", mouseInSVG[0]+40)
                 .attr("y", mouseInSVG[1]+10)
               ;
               explanation3
-                // .text(function(d,i){
-                  // if(d.fall == "Fell"){
-                  //   return d.fall +": It was seen to fall from the sky at first and was tracked down successfully.";
-                  // } else{
-                  //   return d.fall +": It was found on the ground due to the finder recognizing it.";
-                  // }
-                  // console.log("d is " + d);
-                // })
                 .text("Fell or Found: "+d.fall)
-                .attr("font-family", "Rockwell")
                 .attr("x", mouseInSVG[0]+40)
                 .attr("y", mouseInSVG[1]+30)
               ;
               explanation4
                 .text("Mass: " + d.mass + "(g)")
-                .attr("font-family", "Rockwell")
                 .attr("x", mouseInSVG[0]+40)
                 .attr("y", mouseInSVG[1]+50)
               ;
@@ -168,16 +156,6 @@ d3.json("countries.geojson").then(function(geoData){
       .attr("fill", "white")
       .attr("class", "mPoint")
     ;
-
-    // function expText(incomingData){
-    //   // if (d.fall== "Fell"){
-    //   //   return d.name + " was found at " + mTime + ". It was seen to fall from the sky at first and was tracked down successfully.";
-    //   // } else {
-    //   //   return d.name + " was found at " + mTime + ". It was found on the ground due to the finder recognizing it.";
-    //   // }
-    //   console.log("d is "+ incomingData);
-    //   return "AAAAAAAAAAA";
-    // }
 
 
 

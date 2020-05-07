@@ -37,14 +37,27 @@ p{
   margin: 100px;
   background-color: orange;
   /* position: absolute; */
-  top: 800px;
+  top: 1000px;
 }
 
 #note{
   position:absolute;
-  top: 550px;
+  top: 700px;
   font-size: 10px;
 }
+
+
+/* #buttonprevious{
+  width: 100px;
+  height: 10px;
+  position: absolute;
+  background-color: orange;
+  top: 400px;
+  cursor: pointer;
+}
+.previousviz{
+  margin: 0;
+} */
 
 #buttonnext{
   width: 100px;
@@ -52,6 +65,7 @@ p{
   position: absolute;
   background-color: orange;
   top: 450px;
+  cursor: pointer;
 }
 .nextviz{
   margin: 0;
@@ -81,11 +95,17 @@ p{
   position: absolute;
   left: -500px;
   overflow: hidden;
+  background-color: rgba(255,165,0, 0.9);
+  padding: 10px;
 }
 #closeButton{
   cursor: pointer;
   color: white;
-  font-size: 50px;
+  font-size: 1em;
+  text-align: right;
+  margin-right: 5px;
+  text-decoration: underline;
+
 }
 #storyContent{
   margin: 16px;

@@ -17,13 +17,15 @@ let viz = d3.select("#container").append("svg")
 ;
 let mapLayer = viz.append("g").attr("class", "mapLayer");
 let graphGroup = viz.append("g").attr("class", "graphGroup");
-let tooltipLayer = viz.append("g").attr("class", "tooltipPlayer");
+let tooltipLayer = viz.append("g").attr("class", "tooltipLayer");
 
 
 
 
 d3.json("countries.geojson").then(function(geoData){
-  d3.csv("Meteorite_Landings.csv").then(function(incomingData){
+  // d3.csv("Meteorite_Landings.csv").then(function(incomingData){
+  d3.csv("Meteorite_Landings.csv").then(firstVizFunction);
+  function firstVizFunction(incomingData){
     console.log(geoData);
     let projection = d3.geoEqualEarth()//a projection from d3 library
       .translate([w, h])
@@ -74,6 +76,9 @@ d3.json("countries.geojson").then(function(geoData){
               return "translate("+ pixelvalue[0] +","+ pixelvalue[1] +")";
             })
             .on("mouseover", function(d,i){
+              datagroups.select("circle")
+                .attr("fill", "white")
+              ;
               d3.select(this).select("circle")
                 .transition()
                 // .attr("r", 20)
@@ -136,6 +141,9 @@ d3.json("countries.geojson").then(function(geoData){
               ;
             })
             .on("mouseout", function(d,i){
+              datagroups.select("circle")
+                .attr("fill", "white")
+              ;
               explanationDiv
                 .attr("width", 0)
                 .attr("height",0)
@@ -144,10 +152,10 @@ d3.json("countries.geojson").then(function(geoData){
               explanation2.text("");
               explanation3.text("");
               explanation4.text("");
-              d3.select(this).select("circle")
-                .attr("r", 2)
-                .attr("fill", "white")
-              ;
+              // d3.select(this).select("circle")
+              //   .attr("r", 2)
+              //   .attr("fill", "white")
+              // ;
               // var explanation = document.getElementById("explanation");
               // explanation.style.left = "-500px";
               // explanation.style.width = 0;
@@ -238,21 +246,19 @@ d3.json("countries.geojson").then(function(geoData){
             d3.select(this).select("circle")
               .transition()
               .attr("r", 30)
-              .attr("fill", "white")
             ;
           })
           .on("click", function(d,i){
+            d3.select(this).select("circle")
+              .attr("fill", "white")
+            ;
             console.log(this)
             let mouseInSVG = d3.mouse(viz.node());
             var story = document.getElementById("story");
-            var storyContent = document.createElement("P");
-            storyContent.setAttribute("id", "storyContent");
+            let storyContent = document.getElementById("storyContent");
             storyContent.innerText = "Name: " + d.name + "\n" + "\n" + d.discription;
-            story.innerHTML = "";
-            story.appendChild(storyContent);
-            story.style.backgroundColor = "orange";
             story.style.left = (w/2-200) +"px";
-            story.style.top = (h/2-100) + "px";
+            story.style.top = (h/2-200) + "px";
             // explanationDiv
             //   .attr("width", 0)
             //   .attr("height", 0)
@@ -278,6 +284,7 @@ d3.json("countries.geojson").then(function(geoData){
           })
           .on("mouseout", function(d,i){
             d3.select(this).select("circle")
+              .transition()
               .attr("r", 15)
             ;
             // explanationDiv
@@ -297,13 +304,46 @@ d3.json("countries.geojson").then(function(geoData){
       })
 
 
+      enterView({
+        selector:'#buttonnext',
+        enter: function(el){
+          console.log('a special element entered');
+          d3.json("specific_meteorites.json").then(secondVizFunction);
+      	},
+      	exit: function(el) {
+          console.log('a special element exited');
+          d3.csv("Meteorite_Landings.csv").then(firstVizFunction);
+      	},
+      	progress: function(el, progress) {
+          console.log("the special element's progress is:", progress);
+      	},
+        offset: 0.5
+      });
+      enterView({
+        selector:'#titleWord',
+        enter: function(el){
+          console.log('titleWord entered');
+          emptyData = [];
+          let emptyElements = graphGroup.selectAll(".datagroup").data(emptyData).exit()
+          emptyElements.transition().remove();
+        },
+        exit: function(el) {
+          console.log('a special element exited');
+          d3.csv("Meteorite_Landings.csv").then(firstVizFunction);
+        },
+        progress: function(el, progress) {
+          console.log("the special element's progress is:", progress);
+        },
+        offset: 0.5
+      });
 
 
 
 
 
 
-  })//end of incomingdata function
+
+  }//end of incomingdata function
 })//end of geodata function
 
 

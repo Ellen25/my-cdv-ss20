@@ -253,7 +253,7 @@ d3.json("countries.geojson").then(function(geoData){
           d3.csv("Meteorite_Landings.csv").then(firstVizFunction);
           document.getElementById("scrollSign").innerHTML = "Scroll down for some detailed stories";
           document.getElementById("note").innerHTML = "Note: 'Fell' means the meteorite was traced when falling;'Found' means it was identified after falling and being recognized by the founder";
-          document.getElementById("sideNote1").innerHTML = "It takes thousands of years for a meteorite to travel through the space that we do not know much about and come to Earth.The message they are carrying represents the past and the history of the whole space as well as the human beings as their birth can be traced back to the time the solar system was formed. Here are 4 interesting stories behind some meteorite landings ";
+          document.getElementById("sideNote1").innerHTML = "It takes thousands of years for a meteorite to travel through the space that we do not know much about and come to Earth.The message they are carrying represents the past and the history of the whole space as well as the human beings as their birth can be traced back to the time the solar system was formed.";
       	},
       	progress: function(el, progress) {
           console.log("the special element's progress is:", progress);

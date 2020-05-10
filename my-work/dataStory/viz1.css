@@ -1,17 +1,10 @@
-/* #btn {
-  height: 50px;
-  width: 100px;
-  background-color: red;
-  position: absolute;
-  top: 100px;
+/* section{
+  position: relative;
 } */
-
 body{
   background-color: black;
   margin: 0
 }
-
-
 p{
   font-family: Rockwell;
   color: white;
@@ -19,59 +12,48 @@ p{
 
 #container{
   position: sticky;
-  margin:0;
-  top: 0;
-  left: 50px;
-  /* z-index: -1; */
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  top:0;
+  height: 100vh;
+  width: 100%;
+  /* background-color: red; */
+  /* z-index: -1; doesnt wokr, nbecause dowesn allow clicks*/
 }
-
-
-#titleWord{
-  position: absolute;
-  top: 1000px;
-  width: 500px;
-  height: 80px;
-  background-color: rgba(255,165,0, 0.9);
+.mPoint{
+  cursor: pointer;
 }
-
-#title{
+.explanation{
   font-family: Rockwell;
-  text-align: center;
-  font-size: 20px;
-  margin-top: 30px;
 }
 
-#wordAtTheEnd{
-  margin: 100px;
-  background-color: rgba(255,165,0, 0.9);
-  /* position: absolute; */
-  /* top: -1000px;
-  left: -5000px; */
+
+#anotherContainer{
+  /* color:white;
+  outline: 1px solid white; */
+  width: 600px;
+  padding-left: 50px;
+  padding-bottom: 500px;
+  position: relative;
+  pointer-events: none;
 }
-#wordContent{
-  margin: 60px;
-  border-top: 60px;
+#anotherContainer .clickable{
+  pointer-events: all;
+  left: -500px;
 }
 
 #note{
-  /* position:absolute; */
   top: 5px;
   font-size: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
-
 .sideNotes{
+  padding-left: 5px;
+  padding-right: 5px;
   font-size: 10px;
 }
-
-
-
 #buttonnext{
   width: 300px;
   height: 10px;
-  position: absolute;
   background-color: rgba(255,165,0, 0.9);
   top: 500px;
   left: 50px;
@@ -80,19 +62,9 @@ p{
   margin: 0;
   font-size: 3px;
 }
-
-
-.mPoint{
-  cursor: pointer;
-}
-
-.explanation{
-  font-family: Rockwell;
-}
-
 #story{
-  width: 400px;
   position: absolute;
+  width: 400px;
   left: -500px;
   overflow: hidden;
   background-color: rgba(255,165,0, 0.9);
@@ -111,4 +83,31 @@ p{
   margin: 16px;
   margin-top: 23px;
   margin-bottom: 23px;
+}
+
+
+
+
+#titleWord{
+  background-color: rgba(255,165,0, 0.9);
+  width: 400px;
+  height: 40px;
+  margin-left: 50px;
+  margin-top: 100px;
+}
+#title{
+  font-family: Rockwell;
+  text-align: center;
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+#wordAtTheEnd{
+  margin: 80px;
+  margin-top: 0px;
+  background-color: rgba(255,165,0, 0.3);
+}
+#wordContent{
+  margin: 60px;
+  margin-top: -10px;
 }

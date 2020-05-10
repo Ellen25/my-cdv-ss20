@@ -34,7 +34,7 @@ d3.json("countries.geojson").then(function(geoData){
 
 
     d3.shuffle(incomingData);
-    incomingData = incomingData.slice(0,1000);
+    incomingData = incomingData.slice(0,20000);
 
 
 
@@ -209,6 +209,7 @@ d3.json("countries.geojson").then(function(geoData){
           .on("mouseover", function(d,i){
             d3.select(this).select("circle")
               .transition()
+              .attr("fill", "orange")
               .attr("r", 30)
             ;
           })
@@ -221,8 +222,8 @@ d3.json("countries.geojson").then(function(geoData){
             var story = document.getElementById("story");
             let storyContent = document.getElementById("storyContent");
             storyContent.innerText = "Name: " + d.name + "\n" + "\n" + d.discription;
-            story.style.left = (w/2-100) +"px";
-            story.style.top = (h/2+100) + "px";
+            story.style.left = (w/2-200) +"px";
+            story.style.top = -70 + "px";
           })
           .on("mouseout", function(d,i){
             d3.select(this).select("circle")
@@ -246,7 +247,7 @@ d3.json("countries.geojson").then(function(geoData){
           d3.json("specific_meteorites.json").then(secondVizFunction);
           document.getElementById("scrollSign").innerHTML = "Scroll up and go back to the previous view";
           document.getElementById("note").innerHTML = "";
-          document.getElementById("sideNote1").innerHTML = "Meteorites are often considered to be mysterious. Here are four stories behind some meteorite landings, which either shows the negative emotional effect brought up by a meteorite, or the scientific significance of a meteorite. We believe that a meteorite can bring us luck; we consider a meteorite as an omen. But the truth is that we are more likely to become Ann Hodges when encountering a meteorite, being so anxious because of getting a meteorite remain and becoming too famous due to the space rock. The additional meanings of a meteorite has added emotional burden to us. Therefore, it is necessary for us to objectively treat these splendid natural phenomenon.";
+          document.getElementById("sideNote1").innerHTML = "Here are four stories behind some meteorite landings, which either shows the negative emotional effect brought up by a meteorite, or the scientific significance of a meteorite. We believe that a meteorite can bring us luck; we consider a meteorite as an omen. But the truth is that we are more likely to become Ann Hodges when encountering a meteorite, being so anxious because of getting a meteorite remain and becoming too famous due to the space rock. The additional meanings of a meteorite has added emotional burden to us. Therefore, it is necessary for us to objectively treat these splendid natural phenomenon.";
         },
       	exit: function(el) {
           console.log('a special element exited');

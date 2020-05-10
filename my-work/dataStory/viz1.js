@@ -253,30 +253,30 @@ d3.json("countries.geojson").then(function(geoData){
           d3.csv("Meteorite_Landings.csv").then(firstVizFunction);
           document.getElementById("scrollSign").innerHTML = "Scroll down for some detailed stories";
           document.getElementById("note").innerHTML = "Note: 'Fell' means the meteorite was traced when falling;'Found' means it was identified after falling and being recognized by the founder";
-          document.getElementById("sideNote1").innerHTML = "It takes thousands of years for a meteorite to travel through the space that we do not know much about and come to Earth.The message they are carrying represents the past and the history of the whole space as well as the human beings as their birth can be traced back to the time the solar system was formed";
+          document.getElementById("sideNote1").innerHTML = "It takes thousands of years for a meteorite to travel through the space that we do not know much about and come to Earth.The message they are carrying represents the past and the history of the whole space as well as the human beings as their birth can be traced back to the time the solar system was formed. Here are 4 interesting stories behind some meteorite landings ";
       	},
       	progress: function(el, progress) {
           console.log("the special element's progress is:", progress);
       	},
         offset: 0.5
       });
-      enterView({
-        selector:'#titleWord',
-        enter: function(el){
-          console.log('titleWord entered');
-          emptyData = [];
-          let emptyElements = graphGroup.selectAll(".datagroup").data(emptyData).exit()
-          emptyElements.transition().remove();
-        },
-        exit: function(el) {
-          console.log('a special element exited');
-          d3.csv("Meteorite_Landings.csv").then(firstVizFunction);
-        },
-        progress: function(el, progress) {
-          console.log("the special element's progress is:", progress);
-        },
-        offset: 0.5
-      });
+      // enterView({
+      //   selector:'#titleWord',
+      //   enter: function(el){
+      //     console.log('titleWord entered');
+      //     emptyData = [];
+      //     let emptyElements = graphGroup.selectAll(".datagroup").data(emptyData).exit()
+      //     emptyElements.transition().remove();
+      //   },
+      //   exit: function(el) {
+      //     console.log('a special element exited');
+      //     d3.csv("Meteorite_Landings.csv").then(firstVizFunction);
+      //   },
+      //   progress: function(el, progress) {
+      //     console.log("the special element's progress is:", progress);
+      //   },
+      //   offset: 0.5
+      // });
 
 
 

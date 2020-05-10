@@ -221,7 +221,7 @@ d3.json("countries.geojson").then(function(geoData){
             let mouseInSVG = d3.mouse(viz.node());
             var story = document.getElementById("story");
             let storyContent = document.getElementById("storyContent");
-            storyContent.innerText = "Name: " + d.name + "\n" + "\n" + d.discription;
+            storyContent.innerText = "Name: " + d.name + "\n" + "\n" + d.discription + "\n";
             story.style.left = (w/2-200) +"px";
             story.style.top = -70 + "px";
           })

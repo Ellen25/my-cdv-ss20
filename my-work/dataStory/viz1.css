@@ -21,7 +21,7 @@ p{
   position: sticky;
   margin:0;
   top: 0;
-  z-index: -1;
+  /* z-index: -1; */
   /* display: flex;
   justify-content: center;
   align-items: center; */
@@ -45,10 +45,11 @@ p{
 
 #wordAtTheEnd{
   margin: 100px;
-  margin-top: 150px;
   background-color: rgba(255,165,0, 0.9);
+  z-index: 1;
   /* position: absolute; */
-  /* top: 1800px; */
+  /* top: -1000px;
+  left: -5000px; */
 }
 #wordContent{
   margin: 60px;
@@ -56,31 +57,24 @@ p{
 }
 
 #note{
-  position:absolute;
-  top: 1100px;
+  /* position:absolute; */
+  top: 5px;
+  font-size: 5px;
+}
+
+.sideNotes{
   font-size: 10px;
 }
 
 
-/* #buttonprevious{
-  width: 100px;
-  height: 10px;
-  position: absolute;
-  background-color: orange;
-  top: 400px;
-  cursor: pointer;
-}
-.previousviz{
-  margin: 0;
-} */
 
 #buttonnext{
-  width: 250px;
+  width: 300px;
   height: 10px;
   position: absolute;
   background-color: rgba(255,165,0, 0.9);
   top: 550px;
-  cursor: pointer;
+  left: 50px;
 }
 .nextviz{
   margin: 0;

@@ -1,11 +1,4 @@
-// var btn = document.getElementById("btn");
-// btn.addEventListener("click", moveForward);
-// function moveForward(){
-//   console.log("button clicked");
-//   window.open("./viz2.html", "_self");
-// }
 console.log("js loaded");
-
 
 let w = window.innerWidth;
 let h = window.innerHeight;
@@ -27,7 +20,7 @@ d3.json("countries.geojson").then(function(geoData){
   d3.csv("Meteorite_Landings.csv").then(firstVizFunction);
   function firstVizFunction(incomingData){
     console.log(geoData);
-    let projection = d3.geoEqualEarth()//a projection from d3 library
+    let projection = d3.geoEqualEarth()
       .translate([w, h])
       .fitExtent([[0, 0], [w-100, h]], geoData);
     let pathMaker = d3.geoPath(projection);
@@ -39,16 +32,9 @@ d3.json("countries.geojson").then(function(geoData){
         .attr("class", "countries")
     ;
 
-    // let explanation3 = viz.selectAll(".fallExplanation").data(incomingData).enter()
-    //   .append("text")
-    //   .attr("fill", "red")
-    //   .attr("class", "fallExplanation")
-    // ;
 
-
-
-    // d3.shuffle(incomingData);
-    // incomingData = incomingData.slice(0,20000);
+    d3.shuffle(incomingData);
+    incomingData = incomingData.slice(0,1000);
 
 
 
@@ -81,8 +67,8 @@ d3.json("countries.geojson").then(function(geoData){
               ;
               d3.select(this).select("circle")
                 .transition()
-                // .attr("r", 20)
                 .attr("fill", "orange")
+                .attr("r", 10)
               ;
             })
             .on("click", function(d,i){
@@ -98,7 +84,6 @@ d3.json("countries.geojson").then(function(geoData){
               // explanation.style.backgroundColor = "orange";
               // explanation.style.left = mouseInSVG[0] + "px";
               // explanation.style.top = mouseInSVG[1] + "px";
-
               explanationDiv
                 .attr("x", mouseInSVG[0]+30)
                 .attr("y", mouseInSVG[1]-40)
@@ -131,6 +116,7 @@ d3.json("countries.geojson").then(function(geoData){
             .on("mouseout", function(d,i){
               datagroups.select("circle")
                 .attr("fill", "white")
+                .attr("r", 2)
               ;
               explanationDiv
                 .attr("width", 0)
@@ -140,15 +126,6 @@ d3.json("countries.geojson").then(function(geoData){
               explanation2.text("");
               explanation3.text("");
               explanation4.text("");
-              // d3.select(this).select("circle")
-              //   .attr("r", 2)
-              //   .attr("fill", "white")
-              // ;
-              // var explanation = document.getElementById("explanation");
-              // explanation.style.left = "-500px";
-              // explanation.style.width = 0;
-              // explanation.style.height = 0;
-              // content.innerText = "";
             })
           ;
     datagroups.append("circle")
@@ -179,16 +156,13 @@ d3.json("countries.geojson").then(function(geoData){
       .attr("fill", "white")
       .attr("class", "explanation")
     ;
+    graphGroup.selectAll(".datagroup").data(incomingData, assignKeys).exit().remove();
 
 
 
 
 
 
-
-
-
-      // let emptyData = [];
       function secondVizFunction(specificData){
         let storyDiv = tooltipLayer.append("g");
         let storybg = storyDiv.append("rect");
@@ -200,8 +174,8 @@ d3.json("countries.geojson").then(function(geoData){
           .attr("fill", "white")
           .attr("class", "story")
         ;
-
         console.log("function called");
+
         //get current elements
         function assignKeys(d,i){
           return d.name;
@@ -215,11 +189,23 @@ d3.json("countries.geojson").then(function(geoData){
         let exitingElements = currentElements.exit();
         console.log(exitingElements);
         exitingElements.remove();
+
         //update data
-        console.log(currentElements);
-        currentElements
+        // console.log(currentElements);
+        // currentElements
           // .attr("fill", "orange")
           // .attr("r", 20)
+
+        //enter new ones
+        let meteoriteStories = currentElements.enter()
+          .append("g")
+          .attr("class", "datagroup")
+          .attr("transform", function(d){
+            let lat = d.reclat;
+            let lon = d.reclong;
+            let pixelvalue = projection([lon, lat]);
+            return "translate("+ pixelvalue[0] +","+ pixelvalue[1] +")";
+          })
           .on("mouseover", function(d,i){
             d3.select(this).select("circle")
               .transition()
@@ -236,50 +222,21 @@ d3.json("countries.geojson").then(function(geoData){
             let storyContent = document.getElementById("storyContent");
             storyContent.innerText = "Name: " + d.name + "\n" + "\n" + d.discription;
             story.style.left = (w/2-200) +"px";
-            story.style.top = (h/2-200) + "px";
-            // explanationDiv
-            //   .attr("width", 0)
-            //   .attr("height", 0)
-            // ;
-            // explanation1.text(d.discription);
-            // explanation2.text("");
-            // explanation3.text("");
-            // explanation4.text("");
-            // storyDiv
-            //   .attr("transfrom", "translate(500, 200)")
-            // ;
-            // storybg
-            //   .attr("x", 0)
-            //   .attr("y", 0)
-            //   .attr("height", 200)
-            //   .attr("width", 300)
-            // ;
-            // story1
-            //   .attr("text", d.discription)
-            //   .attr("x", 10)
-            //   .attr("y", 10)
-            // ;
+            story.style.top = (h/2+100) + "px";
           })
           .on("mouseout", function(d,i){
             d3.select(this).select("circle")
               .transition()
               .attr("r", 15)
             ;
-            // explanationDiv
-            //   .attr("width", 0)
-            //   .attr("height", 0)
-            // ;
-            // explanation1.text("");
-            // explanation2.text("");
-            // explanation3.text("");
-            // explanation4.text("");
           })
+        meteoriteStories.append("circle")
+          .attr("r", 15)
+          .attr("fill", "orange")
+          .attr("class", "mPoint")
+        ;
       }
 
-      document.getElementById("buttonnext").addEventListener("click", function(){
-        console.log("clicked");
-        d3.json("specific_meteorites.json").then(secondVizFunction);
-      })
 
 
       enterView({
@@ -287,10 +244,16 @@ d3.json("countries.geojson").then(function(geoData){
         enter: function(el){
           console.log('a special element entered');
           d3.json("specific_meteorites.json").then(secondVizFunction);
-      	},
+          document.getElementById("scrollSign").innerHTML = "Scroll up and go back to the previous view";
+          document.getElementById("note").innerHTML = "";
+          document.getElementById("sideNote1").innerHTML = "Meteorites are often considered to be mysterious. We believe that a meteorite can bring us luck; we consider a meteorite as an omen. But the truth is that we are more likely to become Ann Hodges when encountering a meteorite, being so anxious because of getting a meteorite remain and becoming too famous due to the space rock. The additional meanings of a meteorite has added emotional burden to us.";
+        },
       	exit: function(el) {
           console.log('a special element exited');
           d3.csv("Meteorite_Landings.csv").then(firstVizFunction);
+          document.getElementById("scrollSign").innerHTML = "Scroll down for some detailed stories";
+          document.getElementById("note").innerHTML = "Note: 'Fell' means the meteorite was traced when falling;'Found' means it was identified after falling and being recognized by the founder";
+          document.getElementById("sideNote1").innerHTML = "It takes thousands of years for a meteorite to travel through the space that we do not know much about and come to Earth.The message they are carrying represents the past and the history of the whole space as well as the human beings as their birth can be traced back to the time the solar system was formed";
       	},
       	progress: function(el, progress) {
           console.log("the special element's progress is:", progress);
@@ -314,9 +277,6 @@ d3.json("countries.geojson").then(function(geoData){
         },
         offset: 0.5
       });
-
-
-
 
 
 

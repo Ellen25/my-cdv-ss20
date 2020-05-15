@@ -224,9 +224,9 @@ d3.json("countries.geojson").then(function(geoData){
           .attr("r", 15)
           .attr("fill", "orange")
         ;
-        graphGroup.select(".brush").call(brush.move, null)
-        mapLayer.transition()
-         .attr("transform", "translate(0, 0)scale(" + 1 + ")");
+        // graphGroup.select(".brush").call(brush.move, null)
+        // mapLayer.transition()
+        //  .attr("transform", "translate(0, 0)scale(" + 1 + ")");
         //exit most of them
         let exitingElements = currentElements.exit();
         console.log(exitingElements);

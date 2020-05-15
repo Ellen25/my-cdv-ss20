@@ -150,51 +150,51 @@ d3.json("countries.geojson").then(function(geoData){
     ;
     graphGroup.selectAll(".datagroup").data(incomingData, assignKeys).exit().remove();
 
-    var brush = d3.brush()
-      .extent( [ [0,0], [w,h] ] )
-      .on("end", updateMap)
-    ;
-    graphGroup.append("g")
-      .attr("class", "brush")
-      .call(brush)
-    ;
-    var idleTimeout
-    function idled() { idleTimeout = null; }
-    function updateMap() {
-       extent = d3.event.selection
-       console.log(extent);
-       // If no selection, back to initial coordinate. Otherwise, update X axis domain
-       if(!extent){
-         if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
-       }else{
-         graphGroup.select(".brush").call(brush.move, null)
-         console.log("zoom in")
-         // var centroid = pathMaker.centroid(".brush");
-         // var x,y;
-         // x = centroid[0];
-         // y = centroid[1];
-         var p1,p2;
-         p1 = d3.event.selection[0];
-         p2 = d3.event.selection[1];
-         var x,y;
-         x = (p1[0]+p2[0])/2;
-         y = (p1[1]+p2[1])/2;
-         console.log("x", x, "y", y);
-         mapLayer.selectAll(".countries").transition()
-            .attr("transform", "translate(" + w/2 + "," + h/2 + ")scale(" + 2 + ")translate(" + -x + "," + -y + ")")
-          ;
-       }
-       // projection.translate([w/2, h/2]).scale(2);
-       datagroups
-          .attr("transform", function(d){
-             let lat = d.reclat;
-             let lon = d.reclong;
-             let pixelvalue = projection([lon, lat]);
-             return "translate("+ pixelvalue[0] +","+ pixelvalue[1] +")scale(2)";
-           });
-
-
-     }
+    // var brush = d3.brush()
+    //   .extent( [ [0,0], [w,h] ] )
+    //   .on("end", updateMap)
+    // ;
+    // graphGroup.append("g")
+    //   .attr("class", "brush")
+    //   .call(brush)
+    // ;
+    // var idleTimeout
+    // function idled() { idleTimeout = null; }
+    // function updateMap() {
+    //    extent = d3.event.selection
+    //    console.log(extent);
+    //    // If no selection, back to initial coordinate. Otherwise, update X axis domain
+    //    if(!extent){
+    //      if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
+    //    }else{
+    //      graphGroup.select(".brush").call(brush.move, null)
+    //      console.log("zoom in")
+    //      // var centroid = pathMaker.centroid(".brush");
+    //      // var x,y;
+    //      // x = centroid[0];
+    //      // y = centroid[1];
+    //      var p1,p2;
+    //      p1 = d3.event.selection[0];
+    //      p2 = d3.event.selection[1];
+    //      var x,y;
+    //      x = (p1[0]+p2[0])/2;
+    //      y = (p1[1]+p2[1])/2;
+    //      console.log("x", x, "y", y);
+    //      mapLayer.selectAll(".countries").transition()
+    //         .attr("transform", "translate(" + w/2 + "," + h/2 + ")scale(" + 2 + ")translate(" + -x + "," + -y + ")")
+    //       ;
+    //    }
+    //    // projection.translate([w/2, h/2]).scale(2);
+    //    datagroups
+    //       .attr("transform", function(d){
+    //          let lat = d.reclat;
+    //          let lon = d.reclong;
+    //          let pixelvalue = projection([lon, lat]);
+    //          return "translate("+ pixelvalue[0] +","+ pixelvalue[1] +")scale(2)";
+    //        });
+    //
+    //
+    //  }
 
 
 
